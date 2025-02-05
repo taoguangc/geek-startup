@@ -1,0 +1,71 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Hero from '../components/blocks/Hero.astro'
+import Feature from '../components/blocks/Feature.astro'
+import { Image } from 'astro:assets'
+import * as imageUtils from '../utils/image'
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages')
+  return pages.map(page => {
+    const id = page.id.replace(/\.(md|mdx)$/, '')
+    return {
+      params: { id },
+      props: { page }
+    }
+  })
+}
+
+const { page } = Astro.props
+const { title, mainImage, seo, blocks = [] } = page.data
+const { Content } = await render(page)
+
+// 处理主图
+const resolvedMainImage = mainImage ? await imageUtils.getImage(mainImage) : null
+
+// 调试信息
+console.log('Page data:', {
+  title,
+  mainImage,
+  hasBlocks: blocks && blocks.length > 0,
+  blocksCount: blocks?.length
+})
+---
+
+<BaseLayout title={seo?.title ?? title} description={seo?.description} image={seo?.image} showHeader={false}>
+  <article class='mb-16 sm:mb-24'>
+    <header class='mb-8'>
+      <h1 class='text-3xl leading-tight font-serif font-medium sm:text-5xl sm:leading-tight'>{title}</h1>
+    </header>
+
+    {/* 显示主图 */}
+    {resolvedMainImage && (
+      <div class='container mx-auto mb-8'>
+        <Image 
+          src={resolvedMainImage} 
+          alt={title}
+          width={1200}
+          height={600}
+          class="rounded-lg shadow-lg w-full"
+          quality={80}
+          format="webp"
+        />
+      </div>
+    )}
+
+    {/* 渲染 blocks */}
+    {blocks?.map(block => {
+      console.log('Processing block:', block._template)
+      return block._template === 'hero' ? (
+        <Hero headline={block.headline} subHeadline={block.subHeadline} text={block.text} />
+      ) : block._template === 'feature' ? (
+        <Feature items={block.items} />
+      ) : null
+    })}
+
+    <div class='max-w-none prose prose-dante sm:prose-lg'>
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

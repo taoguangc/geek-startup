@@ -1,0 +1,7 @@
+.field-half-width {
+  width: 50% !important;
+  display: inline-block !important;
+  padding-right: 16px;
+  box-sizing: border-box;
+  vertical-align: top;
+}
