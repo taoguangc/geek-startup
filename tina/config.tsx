@@ -1,6 +1,7 @@
 import { defineConfig } from 'tinacms'
 
 import Global from './collections/global'
+import Theme from './collections/theme'
 import Home from './collections/home'
 import Pages from './collections/pages'
 import Posts from './collections/posts'
@@ -27,6 +28,6 @@ export default defineConfig({
   },
   // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
   schema: {
-    collections: [Global, Home, Pages, Posts, Projects]
+    collections: [Global, Theme, Home, Pages, Posts, Projects]
   }
 })

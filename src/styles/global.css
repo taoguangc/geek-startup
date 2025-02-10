@@ -1,13 +1,4 @@
 @import 'tailwindcss';
 
 @import '@fontsource-variable/inter';
-@theme {
-  --font-sans: 'Inter Variable', system-ui, sans-serif;
-  --font-serif: Georgia, Cambria, 'Times New Roman', Times, serif;
-  --text-6xl: 3.5rem;
-  --tracking-tight: -0.04em;
-  --color-text-main: 23 23 23; /* #171717 */
-  --color-bg-main: oklch(97.02% 0 0);
-  --color-bg-muted: 234 233 225; /* #EAE9E1 */
-  --color-border-main: 23 23 23; /* #171717 */
-}
+@config "../../tailwind.config.ts";

@@ -22,73 +22,135 @@ const Global: Collection = {
     },
     {
       type: 'string',
+      name: 'subtitle',
+      label: 'Subtitle'
+    },
+    {
+      type: 'string',
       name: 'description',
       label: 'Description'
     },
     {
       type: 'object',
-      name: 'navigation',
-      label: 'Navigation',
-      list: true,
+      name: 'image',
+      label: 'Image',
       fields: [
         {
-          type: 'string',
-          name: 'label',
-          label: 'Label',
-          required: true
+          name: 'src',
+          label: 'Image Source',
+          type: 'string'
         },
         {
-          type: 'string',
-          name: 'url',
-          label: 'URL',
-          required: true
-        },
-        {
-          type: 'boolean',
-          name: 'showSubMenu',
-          label: 'Show Sub Menu'
-        },
-        {
-          type: 'object',
-          name: 'subMenu',
-          label: 'Sub Menu',
-          list: true,
-          fields: [
-            {
-              type: 'string',
-              name: 'label',
-              label: 'Label',
-              required: true
-            },
-            {
-              type: 'string',
-              name: 'url',
-              label: 'URL',
-              required: true
-            },
-            {
-              type: 'object',
-              name: 'subSubMenu',
-              label: 'Sub Sub Menu',
-              list: true,
-              fields: [
-                {
-                  type: 'string',
-                  name: 'label',
-                  label: 'Label',
-                  required: true
-                },
-                {
-                  type: 'string',
-                  name: 'url',
-                  label: 'URL',
-                  required: true
-                }
-              ]
-            }
-          ]
+          name: 'alt',
+          label: 'Image Alt Text',
+          type: 'string'
         }
       ]
+    },
+    {
+      type: 'object',
+      name: 'navLinks',
+      label: 'Navigation Links',
+      list: true,
+      ui: {
+        itemProps: (item) => {
+          // Field values are accessed by item?.<Field name>
+          return { label: item?.text }
+        }
+      },
+      fields: [
+        {
+          name: 'text',
+          label: 'Link Text',
+          type: 'string'
+        },
+        {
+          name: 'href',
+          label: 'Link URL',
+          type: 'string'
+        }
+      ]
+    },
+    {
+      type: 'object',
+      name: 'footerNavLinks',
+      label: 'Footer Navigation Links',
+      list: true,
+      ui: {
+        itemProps: (item) => {
+          // Field values are accessed by item?.<Field name>
+          return { label: item?.text }
+        }
+      },
+      fields: [
+        {
+          name: 'text',
+          label: 'Link Text',
+          type: 'string'
+        },
+        {
+          name: 'href',
+          label: 'Link URL',
+          type: 'string'
+        }
+      ]
+    },
+    {
+      type: 'object',
+      name: 'socialLinks',
+      label: 'Social Links',
+      list: true,
+      ui: {
+        itemProps: (item) => {
+          // Field values are accessed by item?.<Field name>
+          return { label: item?.text }
+        }
+      },
+      fields: [
+        {
+          name: 'text',
+          label: 'Link Text',
+          type: 'string'
+        },
+        {
+          name: 'href',
+          label: 'Link URL',
+          type: 'string'
+        }
+      ]
+    },
+
+    {
+      type: 'object',
+      name: 'subscribe',
+      label: 'Subscribe',
+      fields: [
+        {
+          name: 'title',
+          label: 'Subscribe Title',
+          type: 'string'
+        },
+        {
+          name: 'text',
+          label: 'Subscribe Text',
+          type: 'string'
+        },
+        {
+          name: 'formUrl',
+          label: 'Form URL',
+          type: 'string'
+        }
+      ]
+    },
+    {
+      type: 'number',
+      name: 'postsPerPage',
+      label: 'Posts Per Page'
+    },
+    {
+      type: 'number',
+      name: 'projectsPerPage',
+      label: 'Projects Per Page'
     }
   ]
 }

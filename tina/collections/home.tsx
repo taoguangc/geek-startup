@@ -25,59 +25,12 @@ const Home: Collection = {
       name: 'description',
       label: 'Description'
     },
-    {
-      type: 'string',
-      name: 'featureType',
-      label: '特性类型',
-      options: [
-        {
-          label: '技术特性',
-          value: 'tech'
-        },
-        {
-          label: '业务特性',
-          value: 'business'
-        },
-        {
-          label: '服务特性',
-          value: 'service'
-        }
-      ],
-      ui: {
-        itemProps: {
-          className: 'field-half-width'
-        }
-      }
-    },
-    {
-      type: 'string',
-      name: 'motionType',
-      label: '动画类型',
-      options: [
-        {
-          label: '从上往下',
-          value: 'fromTop'
-        },
-        {
-          label: '从左往右',
-          value: 'fromLeft'
-        },
-        {
-          label: '从右往左',
-          value: 'fromRight'
-        }
-      ],
-      ui: {
-        itemProps: {
-          className: 'field-half-width'
-        }
-      }
-    },
+
     {
       type: 'object',
       list: true,
-      name: 'blocks',
-      label: 'Blocks',
+      name: 'sections',
+      label: 'Page Sections',
       ui: {
         visualSelector: true
       },
@@ -85,7 +38,20 @@ const Home: Collection = {
         {
           name: 'hero',
           label: 'Hero',
+          defaultItem: {
+            fullWidth: true
+          },
           fields: [
+            {
+              type: 'boolean',
+              name: 'fullWidth',
+              label: 'fullWidth'
+            },
+            {
+              type: 'string',
+              label: 'className',
+              name: 'className'
+            },
             {
               type: 'string',
               label: 'Headline',
@@ -130,6 +96,40 @@ const Home: Collection = {
                   type: 'image',
                   label: 'Feature Image',
                   name: 'fimage'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          label: 'Testimonial',
+          name: 'testimonial',
+          fields: [
+            {
+              type: 'object',
+              label: 'Testimonial Items',
+              name: 'items',
+              list: true,
+              fields: [
+                {
+                  type: 'string',
+                  label: 'Text',
+                  name: 'text'
+                },
+                {
+                  type: 'string',
+                  label: 'Name',
+                  name: 'name'
+                },
+                {
+                  type: 'string',
+                  label: 'Position',
+                  name: 'position'
+                },
+                {
+                  type: 'image',
+                  label: 'Avatar',
+                  name: 'avatar'
                 }
               ]
             }
