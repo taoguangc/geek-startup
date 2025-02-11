@@ -7,11 +7,11 @@ tags:
   - Guide
 seo:
   image:
-    src: '/post-6.jpg'
+    src: '/src/images/post-6.jpg'
     alt: Walking person silhouette
 ---
 
-![Walking person silhouette](/post-6.jpg)
+![Walking person silhouette](/src/images/post-6.jpg)
 
 **Note:** This post was created using Chat GPT to demonstrate the features of the _[Dante Astro.js theme functionality](https://justgoodui.com/astro-themes/dante/)_.
 

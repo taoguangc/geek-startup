@@ -5,7 +5,7 @@ tags:
 isFeatured: true
 seo:
   image:
-    src: /post-13.jpg
+    src: /src/images/post-13.jpg
     alt: Abstract snow
 title: A Guide to Web Performance Metrics
 excerpt: >-
@@ -15,11 +15,11 @@ excerpt: >-
 publishDate: 2024-01-03T00:00:00.000Z
 ---
 
-![Abstract snow](/uploads/post-13.jpg)
+![Abstract snow](/src/images/post-13.jpg)
 
-![](/uploads/post-12.jpg)
+![](/src/images/post-12.jpg)
 
-**Note:** This post was created using Chat GPT to demonstrate the features of the *[Dante Astro.js theme functionality](https://justgoodui.com/astro-themes/dante/)*.
+**Note:** This post was created using Chat GPT to demonstrate the features of the _[Dante Astro.js theme functionality](https://justgoodui.com/astro-themes/dante/)_.
 
 In the ever-evolving landscape of the internet, user expectations for fast and responsive websites continue to rise. **Web performance is a critical factor** that directly impacts user experience, search engine rankings, and overall business success. To ensure your website meets these expectations, it's essential to understand and optimize key web performance metrics. In this guide, we'll explore some crucial metrics and offer insights on how to improve them.
 
@@ -55,4 +55,4 @@ Google's Web Vitals initiative introduced three core metrics – Largest Content
 
 ## Conclusion
 
-Prioritizing web performance metrics is essential for creating a positive user experience, improving search engine rankings, and achieving business goals. Regularly monitor and optimize these metrics to ensure your website not only meets but exceeds user expectations in an ever-competitive online environment. By implementing best practices and staying informed about evolving performance standards, you can future-proof your website and provide a seamless experience for your visitors.![](/uploads/post-12.jpg)
+Prioritizing web performance metrics is essential for creating a positive user experience, improving search engine rankings, and achieving business goals. Regularly monitor and optimize these metrics to ensure your website not only meets but exceeds user expectations in an ever-competitive online environment. By implementing best practices and staying informed about evolving performance standards, you can future-proof your website and provide a seamless experience for your visitors.![](/src/images/post-12.jpg)

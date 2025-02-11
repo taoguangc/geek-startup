@@ -78,6 +78,12 @@ All commands are run from the root of the project, from a terminal:
 
 Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
 
+## Deploy to Vercel
+
+in Build & Development Settings
+build command: tinacms build && astro build
+override is checked
+
 ## Credits
 
 - Demo content generate with [Chat GPT](https://chat.openai.com/)
