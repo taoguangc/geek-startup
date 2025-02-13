@@ -1,10 +1,9 @@
 @import 'tailwindcss';
 
 @import '@fontsource-variable/inter';
-@config "../../tailwind.config.ts";
 
 @theme {
-  --animate-slideDown: wiggle 0.5s ease-out;
+  --animate-slideDown: slideDown 0.5s ease-out;
   @keyframes slideDown {
     0% {
       transform: translateY(-100%);
@@ -14,3 +13,5 @@
     }
   }
 }
+
+@config "../../tailwind.config.ts";
