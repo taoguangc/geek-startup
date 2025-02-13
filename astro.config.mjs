@@ -8,19 +8,12 @@ export default defineConfig({
   site: 'https://geek-startup.vercel.app',
   integrations: [mdx(), sitemap()],
   vite: {
-    plugins: [tailwindcss()],
-    build: {
-      assetsInlineLimit: 1024
-    }
+    plugins: [tailwindcss()]
   },
   image: {
     experimentalLayout: 'responsive'
   },
   experimental: {
     responsiveImages: true
-  },
-  prefetch: {
-    prefetchAll: false,
-    defaultStrategy: 'viewport' // 改为视口触发预加载
   }
 })
