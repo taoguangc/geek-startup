@@ -7,7 +7,6 @@ const themeData = JSON.parse(readFileSync(join(__dirname, 'src/data/theme/index.
 
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-  safelist: ['fixed', 'top-0', 'left-0', 'z-50', 'bg-white', 'dark:bg-gray-900', 'animate-slideDown'],
   theme: {
     container: {
       center: true,

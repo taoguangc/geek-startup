@@ -47,7 +47,7 @@ const navLinks = siteConfig.navLinks || []
   const setupHeader = () => {
     const header = document.querySelector('header')
     const SCROLL_THRESHOLD = 150
-    const HEADER_CLASSES = ['fixed', 'top-0', 'left-0', 'z-50', 'bg-white', 'dark:bg-gray-900', 'animate-slideDown']
+    const HEADER_CLASSES = ['fixed', 'top-0', 'left-0', 'z-50', 'bg-gray-200', 'dark:bg-gray-900', 'animate-slideDown']
 
     const toggleHeaderClasses = () => header?.classList[window.scrollY > SCROLL_THRESHOLD ? 'add' : 'remove'](...HEADER_CLASSES)
 
