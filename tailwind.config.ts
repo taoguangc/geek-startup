@@ -1,10 +1,13 @@
 import { readFileSync } from 'fs'
 import { join } from 'path'
+import type { Config } from 'tailwindcss'
 
 // 读取 theme.json 文件
 const themeData = JSON.parse(readFileSync(join(__dirname, 'src/data/theme/index.json'), 'utf-8'))
 
 export default {
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  safelist: ['fixed', 'top-0', 'left-0', 'z-50', 'bg-white', 'dark:bg-gray-900', 'animate-slideDown'],
   theme: {
     container: {
       center: true,
@@ -41,4 +44,4 @@ export default {
     }
   },
   plugins: []
-}
+} satisfies Config
