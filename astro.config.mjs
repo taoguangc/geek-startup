@@ -5,15 +5,22 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://astina.vercel.app',
+  site: 'https://geek-startup.vercel.app',
   integrations: [mdx(), sitemap()],
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    build: {
+      assetsInlineLimit: 1024
+    }
   },
   image: {
     experimentalLayout: 'responsive'
   },
   experimental: {
     responsiveImages: true
+  },
+  prefetch: {
+    prefetchAll: false,
+    defaultStrategy: 'viewport' // 改为视口触发预加载
   }
 })
