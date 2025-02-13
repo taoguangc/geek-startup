@@ -15,8 +15,12 @@ interface Props {
 
 const { title = '', subTitle = '', image = '', items = [] } = Astro.props
 
-// 预处理主图片
-const processedImage = image ? await getImage(image) : null
+// 统一处理所有图片
+const processImages = async (images: (string | undefined)[]) => {
+  return Promise.all(images.map(img => (img ? getImage(img) : null)))
+}
+
+const [processedImage, ...processedServiceImages] = await processImages([image, ...items.map(item => item.serviceImage)])
 ---
 
 <section class='py-20 md:min-h-screen overflow-hidden' data-scroll-container>
@@ -29,8 +33,7 @@ const processedImage = image ? await getImage(image) : null
         {
           items.map((item, index) => (
             <div class='border-b border-gray-300 pb-8 flex flex-row items-center' data-inview='bottom' data-delay={(index * 0.2).toString()}>
-              <img src={item.serviceImage} alt={item.title} width='50' height='50' class='mr-16' />
-
+              {processedServiceImages[index] && <Image src={processedServiceImages[index]} alt={item.title} width={50} height={50} class='mr-16' />}
               <div>
                 <h3 class='text-xl font-semibold pb-4'>{item.title}</h3>
                 <p class='text-gray-600 max-w-72'>{item.description}</p>
