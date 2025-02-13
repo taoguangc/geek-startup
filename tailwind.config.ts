@@ -2,10 +2,25 @@ import { readFileSync } from 'fs'
 import { join } from 'path'
 
 // 读取 theme.json 文件
-const themeData = JSON.parse(readFileSync(join(__dirname, 'src/data/theme/theme.json'), 'utf-8'))
+const themeData = JSON.parse(readFileSync(join(__dirname, 'src/data/theme/index.json'), 'utf-8'))
 
 export default {
   theme: {
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+        xl: '5rem'
+      },
+      screens: {
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1440px' // 设置最大宽度为 1440px
+      }
+    },
     extend: {
       fontFamily: {
         sans: themeData.fonts.sans,

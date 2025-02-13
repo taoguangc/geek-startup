@@ -1,11 +1,11 @@
 ---
-import siteConfig from '../data/global/global.json'
+import siteConfig from '../data/global/index.json'
 
 const socialLinks = siteConfig.socialLinks || []
 const navLinks = siteConfig.footerNavLinks || []
 ---
 
-<footer class='w-full max-w-3xl mx-auto pt-12 pb-10 sm:pt-24 sm:pb-14'>
+<footer class='w-full container mx-auto pt-12 pb-10 sm:pt-24 sm:pb-14'>
   {
     navLinks.length > 0 && (
       <div class='mb-4 flex flex-wrap gap-x-6 gap-y-1'>
@@ -44,3 +44,4 @@ const navLinks = siteConfig.footerNavLinks || []
     </p>
   </div>
 </footer>
+<script></script>

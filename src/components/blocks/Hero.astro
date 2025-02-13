@@ -1,15 +1,29 @@
 ---
+import { Image } from 'astro:assets'
+import { getImage } from '../../utils/image'
+
 interface Props {
   headline?: string
   subHeadline?: string
-  text?: string
+  image?: string
 }
 
-const { headline, subHeadline, text } = Astro.props
+const { headline, subHeadline, image } = Astro.props
+
+const processedImage = image ? await getImage(image) : null
 ---
 
-<section class='py-12 px-6 sm:py-16 bg-gray-50'>
-  {headline && <h2 class='text-4xl font-bold mb-4'>{headline}</h2>}
-  {subHeadline && <h3 class='text-2xl mb-4'>{subHeadline}</h3>}
-  {text && <p class='text-lg'>{text}</p>}
+<section class='grid grid-cols-4 gap-8 py-12 sm:py-16 md:min-h-screen'>
+  <div class='col-span-2 md:col-span-3'>
+    {headline && <h1 class='text-6xl font-bold mb-4' set:html={headline} />}
+  </div>
+  <div class='col-span-2 md:col-span-1'>
+    {subHeadline && <h3 class='text-md text mb-4'>{subHeadline}</h3>}
+  </div>
+  <div class='col-span-2 md:col-span-1'>
+    <!-- 预留给其他内容的空间 -->
+  </div>
+  <div class='col-span-2 md:col-span-3'>
+    {processedImage && <Image src={processedImage} alt={headline ?? ''} width='960' height='480' class='w-full h-auto object-cover' />}
+  </div>
 </section>

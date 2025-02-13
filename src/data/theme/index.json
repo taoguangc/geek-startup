@@ -17,9 +17,9 @@
     "tight": "-0.04em"
   },
   "colors": {
-    "primary": "#BD10E0",
+    "primary": "#E08A10",
     "secondary": "#417505",
-    "background": "#393",
+    "background": "#F1F3F5",
     "text": "#0254D0"
   },
   "spacing": {

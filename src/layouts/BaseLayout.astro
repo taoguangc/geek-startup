@@ -1,12 +1,12 @@
 ---
 import { ClientRouter } from 'astro:transitions'
 import BaseHead, { type Props as HeadProps } from '../components/BaseHead.astro'
-import Footer from '../components/Footer.astro'
 import Header from '../components/Header.astro'
-import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+import Scripts from '../components/localScripts.astro'
 
-export type Props = HeadProps & { showHeader?: boolean }
-const { showHeader = true, ...head } = Astro.props
+export type Props = HeadProps
+const { ...head } = Astro.props
 ---
 
 <!doctype html>
@@ -20,14 +20,12 @@ const { showHeader = true, ...head } = Astro.props
     </script>
     <ClientRouter />
   </head>
-  <body class='bg-main font-sans'>
-    <div class='flex flex-col min-h-screen px-4 md:px-8'>
-      <Nav />
-      {showHeader && <Header />}
-      <main class='grow w-full max-w-3xl mx-auto'>
-        <slot />
-      </main>
-      <Footer />
-    </div>
+  <body class='bg-backdround font-sans'>
+    <Header />
+    <main class='grow w-full container mx-auto'>
+      <slot />
+    </main>
+    <Footer />
+    <Scripts />
   </body>
 </html>

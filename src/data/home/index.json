@@ -1,0 +1,35 @@
+{
+  "title": "Home Page",
+  "description": "Welcome to the home page.",
+  "sections": [
+    {
+      "headline": "Digital marketing<br />the new way.",
+      "subHeadline": "We take a similar approach to design commercial we do impactfully approches over the flowchart of user friendly wireframe.",
+      "image": "/src/images/19.jpg",
+      "_template": "hero"
+    },
+    {
+      "title": "We want to bring business & the digital world together.",
+      "subTitle": "What we do?",
+      "image": "/src/images/v1.jpg",
+      "items": [
+        {
+          "title": "E-Commerce",
+          "description": "Praesent faucibus nisl sit amet nulla pretium a sed purus.",
+          "serviceImage": "/src/images/2.png"
+        },
+        {
+          "title": "Product Design",
+          "description": "Praesent faucibus nisl sit amet nulla pretium a sed purus.",
+          "serviceImage": "/src/images/1.png"
+        },
+        {
+          "title": "Marketing Strategy",
+          "description": "Praesent faucibus nisl sit amet nulla pretium a sed purus.",
+          "serviceImage": "/src/images/0.png"
+        }
+      ],
+      "_template": "services"
+    }
+  ]
+}

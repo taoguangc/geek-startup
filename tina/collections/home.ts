@@ -38,20 +38,7 @@ const Home: Collection = {
         {
           name: 'hero',
           label: 'Hero',
-          defaultItem: {
-            fullWidth: true
-          },
           fields: [
-            {
-              type: 'boolean',
-              name: 'fullWidth',
-              label: 'fullWidth'
-            },
-            {
-              type: 'string',
-              label: 'className',
-              name: 'className'
-            },
             {
               type: 'string',
               label: 'Headline',
@@ -60,15 +47,15 @@ const Home: Collection = {
             {
               type: 'string',
               label: 'Sub Headline',
-              name: 'subHeadline'
-            },
-            {
-              type: 'string',
-              label: 'Text',
-              name: 'text',
+              name: 'subHeadline',
               ui: {
                 component: 'textarea'
               }
+            },
+            {
+              type: 'image',
+              label: 'Image',
+              name: 'image'
             }
           ]
         },
@@ -130,6 +117,50 @@ const Home: Collection = {
                   type: 'image',
                   label: 'Avatar',
                   name: 'avatar'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          label: 'Services',
+          name: 'services',
+          fields: [
+            {
+              type: 'string',
+              label: 'Title',
+              name: 'title'
+            },
+            {
+              type: 'string',
+              label: 'Sub Title',
+              name: 'subTitle'
+            },
+            {
+              type: 'image',
+              label: 'Image',
+              name: 'image'
+            },
+            {
+              type: 'object',
+              label: 'Services Items',
+              name: 'items',
+              list: true,
+              fields: [
+                {
+                  type: 'string',
+                  label: 'Title',
+                  name: 'title'
+                },
+                {
+                  type: 'string',
+                  label: 'Description',
+                  name: 'description'
+                },
+                {
+                  type: 'image',
+                  label: 'Service Image',
+                  name: 'serviceImage'
                 }
               ]
             }

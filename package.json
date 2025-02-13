@@ -1,7 +1,7 @@
 {
   "name": "astina",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "scripts": {
     "dev": "tinacms dev -c \"astro dev\"",
     "start": "astro dev",
@@ -15,7 +15,8 @@
     "@astrojs/sitemap": "^3.2.1",
     "@fontsource-variable/inter": "^5.1.1",
     "@tailwindcss/vite": "^4.0.6",
-    "astro": "^5.2.5",
+    "astro": "^5.2.6",
+    "motion": "^12.4.2",
     "sharp": "^0.33.5",
     "tailwindcss": "^4.0.6",
     "tinacms": "^2.6.3"

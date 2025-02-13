@@ -2,23 +2,38 @@
 import { getCollection } from 'astro:content'
 import BaseLayout from '../layouts/BaseLayout.astro'
 import Button from '../components/Button.astro'
-import Hero from '../components/Hero.astro'
+import Hero from '../components/blocks/Hero.astro'
+import Services from '../components/blocks/Services.astro'
 import PostPreview from '../components/PostPreview.astro'
 import ProjectPreview from '../components/ProjectPreview.astro'
-import siteConfigData from '../data/global/global.json'
+import siteConfigData from '../data/global/index.json'
+import homeData from '../data/home/index.json'
 import { sortItemsByDateDesc } from '../utils/data-utils'
 
 const siteConfig = siteConfigData
+const { sections } = homeData
 
 const posts = (await getCollection('posts')).sort(sortItemsByDateDesc)
 const featuredPosts = posts.filter(({ data }) => data.isFeatured)
 
 const projects = (await getCollection('projects')).sort(sortItemsByDateDesc)
 const featuredProjects = projects.filter(({ data }) => data.isFeatured)
+
+// 组件映射对象
+const BLOCK_COMPONENTS = {
+  hero: Hero,
+  services: Services
+} as const
 ---
 
 <BaseLayout description={siteConfig.description} image={siteConfig.image}>
-  <Hero />
+  {
+    sections?.map(block => {
+      const Component = BLOCK_COMPONENTS[block._template as keyof typeof BLOCK_COMPONENTS]
+      return Component && <Component {...(block as any)} />
+    })
+  }
+
   {
     featuredProjects?.length > 0 && (
       <div class='mb-16 sm:mb-24'>

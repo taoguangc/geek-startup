@@ -6,6 +6,7 @@ const Global: Collection = {
   path: 'src/data/global',
   format: 'json',
   ui: {
+    global: true,
     allowedActions: {
       create: false,
       delete: false,
