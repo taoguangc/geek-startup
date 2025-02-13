@@ -8,18 +8,11 @@ const navLinks = siteConfig.navLinks || []
 
 <header class='w-full border-b-2 border-b-black/5 mb-12 sm:mb-16 transition-all duration-300'>
   <div class='container flex flex-row justify-between items-center py-4 md:py-6'>
-    {
-      siteConfig.title ? (
-        <a class='font-serif text-2xl leading-tight font-medium text-theme-foreground sm:text-4xl' href='/'>
-          {siteConfig.title}
-        </a>
-      ) : (
-        <a class='font-serif text-2xl leading-tight font-medium text-theme-foreground sm:text-4xl' href='/'>
-          {siteConfig.title}
-        </a>
-      )
-    }
-    <nav class=''>
+    <a class='font-serif text-2xl leading-tight font-medium text-theme-foreground sm:text-4xl' href='/'>
+      {siteConfig.title}
+    </a>
+
+    <nav>
       {
         navLinks.length > 0 && (
           <div class='w-full container mx-auto relative'>
@@ -51,13 +44,20 @@ const navLinks = siteConfig.navLinks || []
 </header>
 
 <script>
-  const header = document.querySelector('header')
+  const setupHeader = () => {
+    const header = document.querySelector('header')
+    const SCROLL_THRESHOLD = 150
+    const HEADER_CLASSES = ['fixed', 'top-0', 'left-0', 'z-50', 'bg-gray-200', 'animate-slideDown']
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 150) {
-      header?.classList.add('fixed', 'top-0', 'left-0', 'z-50', 'bg-gray-200', 'animate-slideDown')
-    } else {
-      header?.classList.remove('fixed', 'top-0', 'left-0', 'z-50', 'bg-gray-200', 'animate-slideDown')
-    }
+    const toggleHeaderClasses = () => header?.classList[window.scrollY > SCROLL_THRESHOLD ? 'add' : 'remove'](...HEADER_CLASSES)
+
+    window.addEventListener('scroll', toggleHeaderClasses)
+    return () => window.removeEventListener('scroll', toggleHeaderClasses)
+  }
+
+  let cleanup = setupHeader()
+  document.addEventListener('astro:page-load', () => {
+    cleanup?.()
+    cleanup = setupHeader()
   })
 </script>
