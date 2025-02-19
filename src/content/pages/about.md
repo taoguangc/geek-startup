@@ -7,7 +7,7 @@ seo:
   image:
     src: /src/images/about.jpeg
     alt: A person sitting at a desk in front of a computer
-blocks:
+sections:
   - headline: Hero
     subHeadline: Hero Sub
     text: This is a hero block.

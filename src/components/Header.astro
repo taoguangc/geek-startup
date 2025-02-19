@@ -6,7 +6,7 @@ import siteConfig from '../data/global/index.json'
 const navLinks = siteConfig.navLinks || []
 ---
 
-<header class='w-full border-b-2 border-b-black/5 mb-12 sm:mb-16 transition-all duration-300'>
+<header class='w-full bg-white border-b-2 border-b-black/5 transition-all duration-300'>
   <div class='container flex flex-row justify-between items-center py-4 md:py-6'>
     <a class='font-serif text-2xl leading-tight font-medium text-theme-foreground sm:text-4xl' href='/'>
       {siteConfig.title}
@@ -15,49 +15,56 @@ const navLinks = siteConfig.navLinks || []
     <nav>
       {
         navLinks.length > 0 && (
-          <div class='w-full container mx-auto relative'>
-            <button
-              class='menu-toggle w-8 h-8 -ml-1 flex items-center justify-center relative z-30 md:hidden'
-              aria-label='Open Menu'
-              aria-expanded='false'
-              aria-controls='menu-items'
-            >
-              <span class='menu-toggle-icon w-6 h-px relative bg-current' />
-            </button>
-            <ul id='menu-items' class='menu flex gap-6'>
-              {navLinks.map(link => (
-                <li class='py-1 px-2'>
-                  <NavLink class='text-gray-500 md:text-base font-medium hover:underline hover:underline-offset-2 hover:decoration-1' href={link.href}>
-                    {link.text}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ul id='menu-items' class='flex gap-6'>
+            {navLinks.map(link => (
+              <li class='py-1 px-2'>
+                <NavLink class='text-gray-500 md:text-base font-medium hover:underline hover:underline-offset-2 hover:decoration-1' href={link.href}>
+                  {link.text}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
         )
       }
     </nav>
-    <div class='w-12'>
-      <ThemeToggle />
-    </div>
+
+    <ThemeToggle />
   </div>
 </header>
 
 <script>
-  const setupHeader = () => {
-    const header = document.querySelector('header')
-    const SCROLL_THRESHOLD = 150
-    const HEADER_CLASSES = ['fixed', 'top-0', 'left-0', 'z-50', 'bg-gray-200', 'dark:bg-gray-900', 'animate-slideDown']
+  class HeaderController {
+    private header: HTMLElement | null
+    private readonly threshold = 200
+    private readonly classes = {
+      initial: ['bg-white'],
+      scrolled: ['fixed', 'top-0', 'left-0', 'z-50', 'bg-gray-200', 'dark:bg-gray-900', 'animate-slideDown']
+    }
 
-    const toggleHeaderClasses = () => header?.classList[window.scrollY > SCROLL_THRESHOLD ? 'add' : 'remove'](...HEADER_CLASSES)
+    constructor() {
+      this.header = document.querySelector('header')
+      this.init()
+    }
 
-    window.addEventListener('scroll', toggleHeaderClasses)
-    return () => window.removeEventListener('scroll', toggleHeaderClasses)
+    private init() {
+      this.handleScroll = this.handleScroll.bind(this)
+      window.addEventListener('scroll', this.handleScroll, { passive: true })
+    }
+
+    private handleScroll() {
+      const isScrolled = window.scrollY > this.threshold
+      this.header?.classList.remove(...(isScrolled ? this.classes.initial : this.classes.scrolled))
+      this.header?.classList.add(...(isScrolled ? this.classes.scrolled : this.classes.initial))
+    }
+
+    public cleanup() {
+      window.removeEventListener('scroll', this.handleScroll)
+    }
   }
 
-  let cleanup = setupHeader()
+  let controller = new HeaderController()
   document.addEventListener('astro:page-load', () => {
-    cleanup?.()
-    cleanup = setupHeader()
+    controller.cleanup()
+    controller = new HeaderController()
   })
 </script>

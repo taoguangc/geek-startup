@@ -20,13 +20,6 @@ const processedItems = await Promise.all(
     processedImage: item.fimage ? await getImage(item.fimage) : null
   }))
 )
-
-// 调试信息
-console.log('Feature props:', {
-  itemsCount: items.length,
-  firstItem: items[0],
-  allKeys: items.map(item => Object.keys(item))
-})
 ---
 
 <section class={`grid grid-col-1 ${itemClass} container mx-auto`}>
@@ -37,14 +30,14 @@ console.log('Feature props:', {
         {item.text && <p class='text-gray-700'>{item.text}</p>}
         {item.processedImage && (
           <div class='mt-4'>
-            <Image 
+            <Image
               src={item.processedImage}
               alt={item.title || 'Feature image'}
               width={600}
               height={400}
               quality={80}
-              format="webp"
-              class="max-w-full h-auto rounded-lg shadow-md"
+              format='webp'
+              class='max-w-full h-auto rounded-lg shadow-md'
             />
           </div>
         )}

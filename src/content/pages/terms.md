@@ -5,7 +5,7 @@ seo:
   description: >-
     Explore the terms and conditions of Dante website for a clear understanding
     of guidelines and responsibilities.
-blocks:
+sections:
   - items:
       - title: f1
         text: 'f1 dsafdsaf '

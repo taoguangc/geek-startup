@@ -3,7 +3,7 @@ title: Get in touch
 seo:
   title: Contact
   description: Get in touch through email or social media! Let me know how I can help.
-blocks:
+sections:
   - items:
       - title: f1
         text: f1 description

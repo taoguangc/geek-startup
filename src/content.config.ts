@@ -42,7 +42,7 @@ const pages = defineCollection({
           .optional()
       })
       .optional(),
-    blocks: z
+    sections: z
       .array(
         z.discriminatedUnion('_template', [
           z.object({

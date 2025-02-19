@@ -1,8 +1,8 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content'
 import BaseLayout from '../layouts/BaseLayout.astro'
-import Hero from '../components/blocks/Hero.astro'
-import Feature from '../components/blocks/Feature.astro'
+import Hero from '../components/sections/Hero.astro'
+import Feature from '../components/sections/Feature.astro'
 import { Image } from 'astro:assets'
 import * as imageUtils from '../utils/image'
 
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 }
 
 const { page } = Astro.props
-const { title, mainImage, seo, blocks = [] } = page.data
+const { title, mainImage, seo, sections = [] } = page.data
 const { Content } = await render(page)
 
 // 处理主图
@@ -40,13 +40,13 @@ const resolvedMainImage = mainImage ? await imageUtils.getImage(mainImage) : nul
       )
     }
 
-    {/* 渲染 blocks */}
+    {/* 渲染 sections */}
     {
-      blocks?.map(block => {
-        return block._template === 'hero' ? (
-          <Hero headline={block.headline} subHeadline={block.subHeadline} text={block.text} />
-        ) : block._template === 'feature' ? (
-          <Feature items={block.items} />
+      sections?.map(section => {
+        return section._template === 'hero' ? (
+          <Hero headline={section.headline} subHeadline={section.subHeadline} text={section.text} />
+        ) : section._template === 'feature' ? (
+          <Feature items={section.items} />
         ) : null
       })
     }

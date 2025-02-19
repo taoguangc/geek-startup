@@ -6,7 +6,27 @@
       "headline": "Digital marketing<br />the new way.",
       "subHeadline": "We take a similar approach to design commercial we do impactfully approches over the flowchart of user friendly wireframe.",
       "image": "/src/images/19.jpg",
-      "_template": "hero"
+      "_template": "Hero"
+    },
+    {
+      "items": [
+        {
+          "title": "UI-UX Experience"
+        },
+        {
+          "title": "Web Development"
+        },
+        {
+          "title": "Digital Marketing"
+        },
+        {
+          "title": "Product Design"
+        },
+        {
+          "title": "Mobile Solutions"
+        }
+      ],
+      "_template": "Marquee"
     },
     {
       "title": "We want to bring business & the digital world together.",
@@ -29,7 +49,46 @@
           "serviceImage": "/src/images/0.png"
         }
       ],
-      "_template": "services"
+      "_template": "Services"
+    },
+    {
+      "customers": [
+        {
+          "name": "Leonard Heiser",
+          "job": "CEO",
+          "avatar": "/src/images/1.jpg",
+          "testimonial": "I have been hiring people in this space for a number of years and I have never seen this level of professionalism. It really feels like you are working with a team that can get the job done."
+        },
+        {
+          "name": "Leonard Heiser",
+          "job": "CEO",
+          "avatar": "/src/images/2.jpg",
+          "testimonial": "I have been hiring people in this space for a number of years and I have never seen this level of professionalism. It really feels like you are working with a team that can get the job done."
+        },
+        {
+          "name": "Leonard Heiser",
+          "job": "CEO",
+          "avatar": "/src/images/3.jpg",
+          "testimonial": "I have been hiring people in this space for a number of years and I have never seen this level of professionalism. It really feels like you are working with a team that can get the job done."
+        }
+      ],
+      "_template": "Testimonials"
+    },
+    {
+      "title": "Projects",
+      "_template": "Projects"
+    },
+    {
+      "title": "Posts",
+      "_template": "Posts"
+    },
+    {
+      "headline": "Ready to get started?",
+      "actionLink": {
+        "text": "Let’s get to work.",
+        "href": "/contact"
+      },
+      "_template": "CallToAction"
     }
   ]
 }

@@ -36,7 +36,7 @@ const Home: Collection = {
       },
       templates: [
         {
-          name: 'hero',
+          name: 'Hero',
           label: 'Hero',
           fields: [
             {
@@ -60,14 +60,43 @@ const Home: Collection = {
           ]
         },
         {
+          name: 'Marquee',
+          label: 'Marquee',
+          fields: [
+            {
+              type: 'object',
+              label: 'Marquee Items',
+              name: 'items',
+              list: true,
+              ui: {
+                itemProps: (item) => {
+                  return { label: item?.title }
+                }
+              },
+              fields: [
+                {
+                  type: 'string',
+                  label: 'Title',
+                  name: 'title'
+                }
+              ]
+            }
+          ]
+        },
+        {
           label: 'Feature',
-          name: 'feature',
+          name: 'Feature',
           fields: [
             {
               type: 'object',
               label: 'Feature Items',
               name: 'items',
               list: true,
+              ui: {
+                itemProps: (item) => {
+                  return { label: item?.title }
+                }
+              },
               fields: [
                 {
                   type: 'string',
@@ -89,42 +118,8 @@ const Home: Collection = {
           ]
         },
         {
-          label: 'Testimonial',
-          name: 'testimonial',
-          fields: [
-            {
-              type: 'object',
-              label: 'Testimonial Items',
-              name: 'items',
-              list: true,
-              fields: [
-                {
-                  type: 'string',
-                  label: 'Text',
-                  name: 'text'
-                },
-                {
-                  type: 'string',
-                  label: 'Name',
-                  name: 'name'
-                },
-                {
-                  type: 'string',
-                  label: 'Position',
-                  name: 'position'
-                },
-                {
-                  type: 'image',
-                  label: 'Avatar',
-                  name: 'avatar'
-                }
-              ]
-            }
-          ]
-        },
-        {
           label: 'Services',
-          name: 'services',
+          name: 'Services',
           fields: [
             {
               type: 'string',
@@ -146,6 +141,11 @@ const Home: Collection = {
               label: 'Services Items',
               name: 'items',
               list: true,
+              ui: {
+                itemProps: (item) => {
+                  return { label: item?.title }
+                }
+              },
               fields: [
                 {
                   type: 'string',
@@ -163,6 +163,108 @@ const Home: Collection = {
                   name: 'serviceImage'
                 }
               ]
+            }
+          ]
+        },
+        {
+          label: 'Call To Action',
+          name: 'CallToAction',
+          fields: [
+            {
+              type: 'string',
+              label: 'Headline',
+              name: 'headline'
+            },
+            {
+              type: 'object',
+              label: 'Action Link',
+              name: 'actionLink',
+              fields: [
+                {
+                  type: 'string',
+                  label: 'Link Text',
+                  name: 'text'
+                },
+                {
+                  type: 'string',
+                  label: 'Link URL',
+                  name: 'href'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          label: 'Testimonials',
+          name: 'Testimonials',
+          fields: [
+            {
+              type: 'string',
+              label: 'Title',
+              name: 'title'
+            },
+            {
+              type: 'image',
+              label: 'Image',
+              name: 'image'
+            },
+            {
+              type: 'object',
+              label: 'Customers',
+              name: 'customers',
+              list: true,
+              ui: {
+                itemProps: (item) => {
+                  return { label: item?.name }
+                }
+              },
+              fields: [
+                {
+                  type: 'string',
+                  label: 'Name',
+                  name: 'name'
+                },
+                {
+                  type: 'string',
+                  label: 'job Title',
+                  name: 'job'
+                },
+                {
+                  type: 'image',
+                  label: 'Avatar',
+                  name: 'avatar'
+                },
+                {
+                  type: 'string',
+                  label: 'Testimonial',
+                  name: 'testimonial',
+                  ui: {
+                    component: 'textarea'
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          label: 'Projects',
+          name: 'Projects',
+          fields: [
+            {
+              type: 'string',
+              label: 'Title',
+              name: 'title'
+            }
+          ]
+        },
+        {
+          label: 'Posts',
+          name: 'Posts',
+          fields: [
+            {
+              type: 'string',
+              label: 'Title',
+              name: 'title'
             }
           ]
         }
