@@ -23,12 +23,11 @@ const processImages = async (images: (string | undefined)[]) => {
 const [processedImage, ...processedServiceImages] = await processImages([image, ...items.map(item => item.serviceImage)])
 ---
 
-<section class='container mx-auto py-20 md:min-h-screen relative'>
-  <div class='flex md:gap-32'>
-    <div class='w-5/12 mb-12' data-inview='left' data-delay='0'>
+<section class='container mx-auto py-20 px-4 md:px-0 md:min-h-screen relative'>
+  <div class='flex flex-col md:flex-row md:gap-32'>
+    <div class='w-full md:w-5/12 mb-12' data-inview='left' data-delay='0'>
       <h6 class='text-gray-600 mb-6'>{subTitle}</h6>
-      <h2 class='text-4xl font-bold mb-12'>{title}</h2>
-
+      <h2 class='text-3xl md:text-4xl font-bold mb-12'>{title}</h2>
       <div class='flex flex-col gap-8'>
         {
           items.map((item, index) => (
@@ -46,7 +45,7 @@ const [processedImage, ...processedServiceImages] = await processImages([image, 
         }
       </div>
     </div>
-    <div class='w-5/12'>
+    <div class='w-full md:w-5/12'>
       {processedImage && <Image src={processedImage} alt={title} width='600' height='900' class='w-full parallax' />}
     </div>
   </div>

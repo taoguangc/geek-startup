@@ -6,39 +6,81 @@ import siteConfig from '../data/global/index.json'
 const navLinks = siteConfig.navLinks || []
 ---
 
-<header class='w-full bg-white border-b-2 border-b-black/5 transition-all duration-300'>
-  <div class='container flex flex-row justify-between items-center py-4 md:py-6'>
-    <a class='font-serif text-2xl leading-tight font-medium text-theme-foreground sm:text-4xl' href='/'>
-      {siteConfig.title}
-    </a>
+<header class='w-full border-b-2 border-b-black/5 transition-all duration-300'>
+  <div class='container p-4 md:px-0 md:py-6'>
+    <div class='flex flex-row items-center justify-between w-full'>
+      <a class='mr-auto md:mr-0 font-serif text-2xl leading-tight font-medium text-theme-foreground sm:text-4xl' href='/'>
+        {siteConfig.title}
+      </a>
 
-    <nav>
-      {
-        navLinks.length > 0 && (
-          <ul id='menu-items' class='flex gap-6'>
-            {navLinks.map(link => (
-              <li class='py-1 px-2'>
-                <NavLink class='text-gray-500 md:text-base font-medium hover:underline hover:underline-offset-2 hover:decoration-1' href={link.href}>
-                  {link.text}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        )
-      }
-    </nav>
-
-    <ThemeToggle />
+      <nav class='hidden md:block'>
+        {
+          navLinks.length > 0 && (
+            <ul class='flex flex-col md:flex-row gap-6'>
+              {navLinks.map(link => (
+                <li class='py-1 px-2'>
+                  <NavLink class='text-gray-500 md:text-base font-medium hover:underline hover:underline-offset-2 hover:decoration-1' href={link.href}>
+                    {link.text}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </nav>
+      <button id='hamburger-button' class='w-6 h-4 mr-2 md:hidden relative flex flex-col justify-between cursor-pointer'>
+        <div class='bar'></div>
+        <div class='bar'></div>
+        <div class='bar'></div>
+      </button>
+      <ThemeToggle />
+    </div>
   </div>
+  <nav class='hidden text-gray-900' id='mobile'>
+    {
+      navLinks.length > 0 && (
+        <ul class='flex flex-col md:flex-row'>
+          {navLinks.map(link => (
+            <li class='px-6 py-4 border-b border-gray-300'>
+              <NavLink class='text-gray-500 md:text-base font-medium hover:underline hover:underline-offset-2 hover:decoration-1' href={link.href}>
+                {link.text}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </nav>
 </header>
+
+<style>
+  .bar {
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    transition: all 0.3s ease-in-out;
+  }
+
+  #hamburger-button.open .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  #hamburger-button.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  #hamburger-button.open .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+</style>
 
 <script>
   class HeaderController {
     private header: HTMLElement | null
     private readonly threshold = 200
     private readonly classes = {
-      initial: ['bg-white'],
-      scrolled: ['fixed', 'top-0', 'left-0', 'z-50', 'bg-gray-200', 'dark:bg-gray-900', 'animate-slideDown']
+      initial: ['bg-gray-200'],
+      scrolled: ['fixed', 'top-0', 'left-0', 'bg-gray-200', 'z-50', 'dark:bg-gray-900', 'animate-slideDown']
     }
 
     constructor() {
@@ -67,4 +109,15 @@ const navLinks = siteConfig.navLinks || []
     controller.cleanup()
     controller = new HeaderController()
   })
+
+  const hamburgerButton = document.getElementById('hamburger-button')
+  const mobile = document.getElementById('mobile')
+
+  if (hamburgerButton && mobile) {
+    hamburgerButton.addEventListener('click', () => {
+      hamburgerButton.classList.toggle('open')
+      mobile.classList.toggle('hidden')
+      mobile.classList.toggle('block')
+    })
+  }
 </script>
