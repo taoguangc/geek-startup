@@ -1,7 +1,7 @@
 {
-  "title": "Dante1",
-  "subtitle": "Minimal Astro.js theme",
-  "description": "Astro.js and Tailwind CSS theme for blog and portfolio by justgoodui.com",
+  "title": "ASTINA",
+  "subtitle": "Astro & TinaCMS theme",
+  "description": "Astro.js and Tailwind CSS theme for blog and portfolio by emptyarea.com",
   "image": {
     "src": "/src/images/dante-preview.jpg",
     "alt": "Dante - Astro.js and Tailwind CSS theme"

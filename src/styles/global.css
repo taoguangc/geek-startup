@@ -23,6 +23,11 @@
   }
 }
 
+/* container option behave strangely */
+html {
+  position: relative;
+}
+
 /* 页面过渡效果 */
 body {
   opacity: 0;
