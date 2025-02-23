@@ -1,9 +1,7 @@
-import { readFileSync } from 'fs'
-import { join } from 'path'
 import type { Config } from 'tailwindcss'
 
 // 读取 theme.json 文件
-const themeData = JSON.parse(readFileSync(join(__dirname, 'src/data/theme/index.json'), 'utf-8'))
+const themeData = require('./src/data/theme/index.json')
 
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
